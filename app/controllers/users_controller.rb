@@ -1,15 +1,23 @@
 class UsersController < ApplicationController
-	before_action :authenticate_user!
+	before_action :authenticate_user!, except: [:index]
+  
 
-
+ #  named_scope :without_user, lambda{|user| user ? {:conditions => ["id != ?", user.id]} : {} }
   # GET /users
-  def index
-    @users = User.all
-  end
+ def index
+ @users = User.where.not("id = ?",current_user.id).order("created_at DESC")
+      @conversations = Conversation.involving(current_user).order("created_at DESC")
+end
+
+
 
   # GET /users/1
   def show
-    @user = User.find(params[:id])
+    @users = User.all
+
+   
+
+
   end
 
   # GET /users/new
@@ -19,7 +27,8 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
-    @user = User.find(params[:id])
+  @user = current_user
+  
   end
 
 def profile
@@ -42,9 +51,12 @@ def profile
     end
   end
 
+
+
+
   # PATCH/PUT /users/1
   def update
-    @user = User.find(params[:id])
+    @user = current_user
     respond_to do |format|
       if @user.update(user_params)
         format.html { redirect_to @user, notice: 'User was successfully updated.' }
@@ -56,7 +68,7 @@ def profile
 
   # DELETE /users/1
   def destroy
-    @user = User.find(params[:id])
+    @user = current_user
     @user.destroy
     respond_to do |format|
       format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
@@ -69,7 +81,7 @@ def profile
   
 
     def user_params
-      params.require(:user).permit(:email, :first_name, :last_name, :city, :country, :company, :position, :picture_url, :intro)
+      params.require(:user).permit(:email, :password, :first_name, :last_name, :city, :country, :company, :position, :intro, :avatar)
 
 
     end

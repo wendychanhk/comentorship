@@ -11,6 +11,16 @@ gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
 
+gem 'carmen', git: 'git://github.com/jim/carmen.git'
+gem 'carmen-rails', git: 'git://github.com/jim/carmen-rails.git'
+
+gem 'paperclip'
+
+gem 'private_pub'
+gem 'thin'
+
+gem 'will_paginate', '~> 3.0.6'
+
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -28,6 +38,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+
+
+
 
 gem 'devise' 
 
