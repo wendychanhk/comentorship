@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 	before_action :authenticate_user!, except: [:index]
-  
+
 
  #  named_scope :without_user, lambda{|user| user ? {:conditions => ["id != ?", user.id]} : {} }
   # GET /users
@@ -76,14 +76,18 @@ def profile
   end
 
 
-
   private
   
 
     def user_params
-      params.require(:user).permit(:email, :password, :first_name, :last_name, :city, :country, :company, :position, :intro, :avatar)
+      params.require(:user).permit(:email, :password, :first_name, :last_name, :country_code, :city, :company, :position, :intro, :avatar)
 
 
     end
 end
+
+
+
+
+
 

@@ -14,10 +14,11 @@ class User < ActiveRecord::Base
     validates :first_name, presence: true, length: { maximum: 50 }
     validates :last_name, presence: true, length: { maximum: 50 }
     validates :city, presence: true, length: { maximum: 50 }
-    validates :country, presence: true, length: { maximum: 50 }
     validates :company, presence: true, length: { maximum: 50 }
     validates :position, presence: true, length: { maximum: 50 }
     validates :intro, presence: true, length: { maximum: 1000 }
+    validates :country_code, presence: true
+
 
 
 

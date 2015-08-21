@@ -1,18 +1,3 @@
-GIT
-  remote: git://github.com/jim/carmen-rails.git
-  revision: 50ebda9ac696306abdfc6ebd75af06cd79de2ded
-  specs:
-    carmen-rails (1.0.1)
-      carmen (~> 1.0.0)
-      rails
-
-GIT
-  remote: git://github.com/jim/carmen.git
-  revision: b52143fc20e0432ff73fb2fccc576b842ffe5ae3
-  specs:
-    carmen (1.0.2)
-      activesupport (>= 3.0.0)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -58,6 +43,11 @@ GEM
       debug_inspector (>= 0.0.1)
     builder (3.2.2)
     byebug (6.0.0)
+    carmen (1.0.2)
+      activesupport (>= 3.0.0)
+    carmen-rails (1.0.1)
+      carmen (~> 1.0.0)
+      rails
     climate_control (0.0.3)
       activesupport (>= 3.0)
     cocaine (0.5.7)
@@ -209,8 +199,7 @@ PLATFORMS
 
 DEPENDENCIES
   byebug
-  carmen!
-  carmen-rails!
+  carmen-rails
   devise
   jbuilder (~> 2.0)
   jquery-rails

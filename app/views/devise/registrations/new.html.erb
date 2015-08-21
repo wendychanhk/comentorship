@@ -36,21 +36,25 @@
      </div>
 
 
-<div>
+   <div>
     Add Your <%= f.label :avatar %>:
     <%= f.file_field :avatar %>
-</div>
+   </div>
 
 
-      <div class="field">
+   <div class="field">
+    <%= f.label :country_code %><br />
+    <%= f.country_select :country_code, priority: %w(US GB ES HK SG) %>
+     </div>
+
+
+
+
+       <div class="field">
     <%= f.label :city %><br />
         <%= f.text_field :city %>
      </div>
 
-      <div class="field">
-    <%= f.label :country %><br />
-        <%= f.text_field :country %>
-     </div>
       <div class="field">
     <%= f.label :company %><br />
         <%= f.text_field :company %>
