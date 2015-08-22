@@ -8,32 +8,44 @@
         <!-- Default panel contents -->
         <div class="panel-heading">Registered Users</div>
 
-        <!-- Table -->
-        <table class="table">
-          <thead>
-          <tr>
-            <th>#</th>
-            <th>Name</th>
-            <th></th>
-          </tr>
-          </thead>
-          <tbody>
-          <% @users.each_with_index do |user, index| %>
-              <tr>
-                <td><%= index +=1 %></td>
-                <td><%= user.first_name %></td>
-                <td>
-                  <%= link_to "Send Message", "#", class: "btn btn-success btn-xs start-conversation",
-                              "data-sid" => current_user.id, "data-rip" => user.id %>
-                </td>
-              </tr>
-          <% end %>
+      
 
-          </tbody>
-        </table>
-      </div>
 
-    </div>
+<%= form_for_filterrific @filterrific do |f| %>
+  <div>
+    Search
+    <%# give the search field the 'filterrific-periodically-observed' class for live updates %>
+    <%= f.text_field(
+      :search_query,
+      class: 'filterrific-periodically-observed'
+    ) %>
+  </div>
+
+  
+  <div>
+    <%= link_to(
+      'Reset filters',
+      reset_filterrific_url,
+    ) %>
+  </div>
+  <%# add an automated spinner to your form when the list is refreshed %>
+  <%= render_filterrific_spinner %>
+<% end %>
+
+
+<%= render(
+  partial: 'users/list',
+  locals: { users: @users }
+) %>
+
+  <!-- Table -->
+       
+
+
+
+
+
+
     <hr>
     <h3>Your Conversations</h3>
 
@@ -58,9 +70,6 @@
     </div>
 
   </div>
-
-  <div class="col-md-4">
-
   </div>
-
-</div>
+   </div>
+     </div>

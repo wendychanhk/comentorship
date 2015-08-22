@@ -14,4 +14,5 @@
 //= require jquery_ujs
 //= require chat
 //= require private_pub
+//= require filterrific/filterrific-jquery
 //= require_tree .

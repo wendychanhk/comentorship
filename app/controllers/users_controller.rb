@@ -1,13 +1,36 @@
 class UsersController < ApplicationController
-	before_action :authenticate_user!, except: [:index]
-
+	before_action :authenticate_user!
 
  #  named_scope :without_user, lambda{|user| user ? {:conditions => ["id != ?", user.id]} : {} }
   # GET /users
  def index
-      @users = User.where.not("id = ?",current_user.id).order("created_at DESC")
-      @conversations = Conversation.involving(current_user).order("created_at DESC")
-end
+    
+        @conversations = Conversation.involving(current_user).order("created_at DESC")
+
+  
+
+
+    @filterrific = initialize_filterrific(
+      User.where.not("id = ?",current_user.id),
+      params[:filterrific],
+      :select_options => {
+        sorted_by: User.options_for_sorted_by,
+      }
+    ) or return
+    @users = @filterrific.find.page(params[:page])
+
+
+    respond_to do |format|
+      format.html
+      format.js
+    end
+  end
+  
+
+
+
+
+
 
 
 
@@ -80,7 +103,7 @@ def profile
   
 
     def user_params
-      params.require(:user).permit(:email, :password, :first_name, :last_name, :country_code, :city, :company, :position, :intro, :avatar)
+      params.require(:user).permit(:email, :password, :first_name, :last_name, :country_code, :city, :company, :position, :intro, :avatar, :filterrific, :search_query)
 
 
     end
