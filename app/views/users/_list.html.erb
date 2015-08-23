@@ -1,0 +1,37 @@
+ <div id="filterrific_results">
+       
+
+
+        <table class="table">
+          <thead>
+         <tr>
+         
+      <th>Name</th>
+       <th>Country</th>
+      <th>City</th>
+      <th>Intro</th>
+    </tr>
+          </thead>
+          <tbody>
+
+
+          <% @users.each do |user| %>
+              <tr>
+                <td><%= user.first_name %></td>
+        <td><%= user.country_code %> </td>
+        <td><%= user.city %></td>
+        <td><%= user.intro %></td>
+                <td>
+                  <%= link_to "Send Message", "#", class: "btn btn-success btn-xs start-conversation",
+                              "data-sid" => current_user.id, "data-rip" => user.id %>
+                </td>
+              </tr>
+          <% end %>
+
+          </tbody>
+        </table>
+      </div>
+
+
+
+

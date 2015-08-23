@@ -46,7 +46,11 @@ class UsersController < ApplicationController
   # GET /users/new
   def new
     @user = User.new
-  end
+
+    @all_skills = Skill.all? 
+    @users_skills = @user.users_have_skills.build
+
+      end
 
   # GET /users/1/edit
   def edit
@@ -103,7 +107,7 @@ def profile
   
 
     def user_params
-      params.require(:user).permit(:email, :password, :first_name, :last_name, :country_code, :city, :company, :position, :intro, :avatar, :filterrific, :search_query)
+      params.require(:user).permit(:email, :password, :first_name, :last_name, :country_code, :city, :company, :position, :intro, :avatar, :filterrific, :search_query, {:skill => []})
 
 
     end

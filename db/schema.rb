@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150821164801) do
+ActiveRecord::Schema.define(version: 20150823112149) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,20 +37,6 @@ ActiveRecord::Schema.define(version: 20150821164801) do
   add_index "messages", ["conversation_id"], name: "index_messages_on_conversation_id", using: :btree
   add_index "messages", ["user_id"], name: "index_messages_on_user_id", using: :btree
 
-  create_table "skills", force: :cascade do |t|
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "skills_users", id: false, force: :cascade do |t|
-    t.integer "skill_id"
-    t.integer "user_id"
-  end
-
-  add_index "skills_users", ["skill_id"], name: "index_skills_users_on_skill_id", using: :btree
-  add_index "skills_users", ["user_id"], name: "index_skills_users_on_user_id", using: :btree
-
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -75,24 +61,11 @@ ActiveRecord::Schema.define(version: 20150821164801) do
     t.datetime "avatar_updated_at"
     t.string   "country_code"
     t.string   "city"
+    t.text     "skill",                  default: [],              array: true
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
-
-  create_table "users_wanteds", id: false, force: :cascade do |t|
-    t.integer "wanted_id"
-    t.integer "user_id"
-  end
-
-  add_index "users_wanteds", ["user_id"], name: "index_users_wanteds_on_user_id", using: :btree
-  add_index "users_wanteds", ["wanted_id"], name: "index_users_wanteds_on_wanted_id", using: :btree
-
-  create_table "wanteds", force: :cascade do |t|
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
 
   add_foreign_key "messages", "conversations"
   add_foreign_key "messages", "users"

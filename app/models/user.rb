@@ -18,13 +18,7 @@ class User < ActiveRecord::Base
     validates :position, presence: true, length: { maximum: 50 }
     validates :intro, presence: true, length: { maximum: 1000 }
     validates :country_code, presence: true
-
-
-
-
-
-    has_and_belongs_to_many :skills 
-    has_and_belongs_to_many :wanteds
+  
 
     has_many :conversations, :foreign_key => :sender_id
 
