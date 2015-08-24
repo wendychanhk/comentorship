@@ -111,17 +111,6 @@ end
 
 end
 
-# GET /users/1
-  def mentor_profile
-    @users = User.all
-
-  end
-
-
-
-
-
-
 
 
 

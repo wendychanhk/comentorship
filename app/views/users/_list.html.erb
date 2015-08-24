@@ -1,11 +1,11 @@
  <div id="filterrific_results">
-   
+
 
 
   <table class="table">
     <thead>
      <tr>
-       
+
       <th>Name</th>
       <th>Country</th>
       <th>City</th>
@@ -19,8 +19,6 @@
 
     <% @users.each do |user| %>
     <tr>
-
-
       <td><%=link_to user.first_name, "#", data: {toggle: "modal", target: "#myModal"+user.id.to_s} %></td>
       <td><%= user.country_code %> </td>
       <td><%= user.city %></td>
@@ -43,7 +41,7 @@
             <div class="modal-content">
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">User's profile</h4>
+                <h4 class="modal-title" id="myModalLabel"><%= user.first_name %>'s profile</h4>
               </div>
               <div class="modal-body">
                 <ul id='list2'>
@@ -52,7 +50,10 @@
                     <div id="name_modal"><%= user.first_name %></div>  
                     <div id="city_modal"> <%= user.city %></div>
                     <div id="intro_modal"><%= user.intro %></div>
+                    <div id="image_modal"><%= image_tag user.avatar.url %></div>
 
+
+            
                   </ul>
                 </ul>
               </div>
