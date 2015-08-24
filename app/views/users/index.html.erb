@@ -2,74 +2,65 @@
 
 <div class="row">
   <!-- Not implemented on tutorial -->
-  <div class="col-md-4">
-    <div style="height: 300px; overflow-y: auto;">
+
+
+
+
+
+  <div class="col-md-12">
+    <div style="height: 800px; overflow-y: auto;">
       <div class="panel panel-default">
         <!-- Default panel contents -->
         <div class="panel-heading">Registered Users</div>
 
-      
 
 
-<%= form_for_filterrific @filterrific do |f| %>
-  <div>
-    Search
-    <%# give the search field the 'filterrific-periodically-observed' class for live updates %>
-    <%= f.text_field(
-      :search_query,
-      class: 'filterrific-periodically-observed'
-    ) %>
-  </div>
-
-  
-  <div>
-    <%= link_to(
-      'Reset filters',
-      reset_filterrific_url,
-    ) %>
-  </div>
-  <%# add an automated spinner to your form when the list is refreshed %>
-  <%= render_filterrific_spinner %>
-<% end %>
+        <%= form_for_filterrific @filterrific do |f| %>
+        <div>
+          Search
+          <%# give the search field the 'filterrific-periodically-observed' class for live updates %>
+          <%= f.text_field(
+            :search_query,
+            class: 'filterrific-periodically-observed'
+              ) %>
+            </div>
+                  <%# add an automated spinner to your form when the list is refreshed %>
+                  <%= render_filterrific_spinner %>
+               <% end %>
 
 
-<%= render(
-  partial: 'users/list',
-  locals: { users: @users }
-) %>
+                  <%= render(
+                    partial: 'users/list',
+                    locals: { users: @users }
+                    ) %>
 
-  <!-- Table -->
-       
-
+                    <!-- Table -->
 
 
+                    <hr>
+                    <h3>Your Conversations</h3>
 
+                    <div style="height: 400px; overflow-y: auto;">
+                      <% if @conversations.any? %>
+                      <ul class="media-list">
+                        <% @conversations.each do |conversation| %>
+                        <li class="media">
+                          <%= image_tag("http://placehold.it/50x50", class: "media-object pull-left") %>
+                          <div class="media-body">
+                            <%= link_to "", conversation_path(conversation), class: "conversation", "data-cid" => conversation.id %>
+                            <h4 class="media-heading"><%= conversation_interlocutor(conversation).first_name %></h4>
+                            <p><%= conversation.messages.last.nil? ? "No messages" : truncate(conversation.messages.last.body, length: 45) %></p>
+                          </div>
+                        </li>
 
+                        <% end %>
+                      </ul>
+                      <% else %>
+                      <p>You have no conversations. Click send message with any user to create one.</p>
+                      <% end %>
+                    </div>
 
-    <hr>
-    <h3>Your Conversations</h3>
-
-    <div style="height: 400px; overflow-y: auto;">
-      <% if @conversations.any? %>
-          <ul class="media-list">
-            <% @conversations.each do |conversation| %>
-                <li class="media">
-                  <%= image_tag("http://placehold.it/50x50", class: "media-object pull-left") %>
-                  <div class="media-body">
-                    <%= link_to "", conversation_path(conversation), class: "conversation", "data-cid" => conversation.id %>
-                        <h4 class="media-heading"><%= conversation_interlocutor(conversation).first_name %></h4>
-                        <p><%= conversation.messages.last.nil? ? "No messages" : truncate(conversation.messages.last.body, length: 45) %></p>
                   </div>
-                </li>
-
-            <% end %>
-          </ul>
-      <% else %>
-          <p>You have no conversations. Click send message with any user to create one.</p>
-      <% end %>
-    </div>
-
-  </div>
-  </div>
-   </div>
-     </div>
+                </div>
+              </div>
+            </div>

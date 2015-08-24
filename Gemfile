@@ -19,7 +19,8 @@ gem 'thin'
 gem 'filterrific'
 gem 'will_paginate', '~> 3.0.6'
 
-
+gem 'twitter'
+gem 'twitter-text'
 
 
 # Use jquery as the JavaScript library

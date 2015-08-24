@@ -1,37 +1,74 @@
  <div id="filterrific_results">
+   
+
+
+  <table class="table">
+    <thead>
+     <tr>
        
-
-
-        <table class="table">
-          <thead>
-         <tr>
-         
       <th>Name</th>
-       <th>Country</th>
+      <th>Country</th>
       <th>City</th>
       <th>Intro</th>
+      <th>I have</th>
+      <th>I want</th>
     </tr>
-          </thead>
-          <tbody>
+  </thead>
+  <tbody>
 
 
-          <% @users.each do |user| %>
-              <tr>
-                <td><%= user.first_name %></td>
-        <td><%= user.country_code %> </td>
-        <td><%= user.city %></td>
-        <td><%= user.intro %></td>
-                <td>
-                  <%= link_to "Send Message", "#", class: "btn btn-success btn-xs start-conversation",
-                              "data-sid" => current_user.id, "data-rip" => user.id %>
-                </td>
-              </tr>
-          <% end %>
-
-          </tbody>
-        </table>
-      </div>
+    <% @users.each do |user| %>
+    <tr>
 
 
+      <td><%=link_to user.first_name, "#", data: {toggle: "modal", target: "#myModal"+user.id.to_s} %></td>
+      <td><%= user.country_code %> </td>
+      <td><%= user.city %></td>
+      <td><%= user.intro %></td>
+
+      <td><% user.skill.shift %>
+        <%= user.skill.join(", ") %></td>
+        <td><% user.need.shift %>
+          <%= user.need.join(", ") %></td>
+
+          <td>
+            <%= link_to "Send Message", "#", class: "btn btn-success btn-xs start-conversation",
+            "data-sid" => current_user.id, "data-rip" => user.id %>
+          </td>
+        </tr>
 
 
+        <div class="modal fade" id="myModal<%= user.id.to_s %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">User's profile</h4>
+              </div>
+              <div class="modal-body">
+                <ul id='list2'>
+                  <ul id="image2"> 
+
+                    <div id="name_modal"><%= user.first_name %></div>  
+                    <div id="city_modal"> <%= user.city %></div>
+                    <div id="intro_modal"><%= user.intro %></div>
+
+                  </ul>
+                </ul>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+              </div>
+            </div>
+          </div>
+        </div>  
+
+
+
+
+        <% end %>
+
+      </tbody>
+    </table>
+  </div>

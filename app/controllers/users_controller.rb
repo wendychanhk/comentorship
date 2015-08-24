@@ -1,3 +1,5 @@
+require 'twitter'
+
 class UsersController < ApplicationController
 	before_action :authenticate_user!
 
@@ -7,14 +9,12 @@ class UsersController < ApplicationController
     
         @conversations = Conversation.involving(current_user).order("created_at DESC")
 
-  
-
 
     @filterrific = initialize_filterrific(
-      User.where.not("id = ?",current_user.id),
+    User.where.not("id = ?",current_user.id),
       params[:filterrific],
       :select_options => {
-        sorted_by: User.options_for_sorted_by,
+        sorted_by: User.options_for_sorted_by
       }
     ) or return
     @users = @filterrific.find.page(params[:page])
@@ -28,18 +28,9 @@ class UsersController < ApplicationController
   
 
 
-
-
-
-
-
-
   # GET /users/1
   def show
     @users = User.all
-
-   
-
 
   end
 
@@ -103,11 +94,43 @@ def profile
   end
 
 
+
+
+
+def twitter_news
+
+  client = Twitter::REST::Client.new do |config|
+  config.consumer_key        = 'BUsYh9qYnmESuqESatiIXKt3A'
+  config.consumer_secret     = '4Ad3svU2bGvGrQ45OWwyAvF7pviv0ikTb1o0q5QS791oAV8ulk'
+  config.access_token        = '368995232-Rwvgpz7LVtpqQ9HGY1Z7ux1cAOtlVmB3ji9Vo1RS'
+  config.access_token_secret = 'wlW5zhC2N7t9es0vIz9TiPDXZr6mhqQAXM9qo8TJQcU1Z'
+end
+
+  @tweet_news = client.user_timeline("pinchito", {count: 5}) 
+
+
+end
+
+# GET /users/1
+  def mentor_profile
+    @users = User.all
+
+  end
+
+
+
+
+
+
+
+
+
+
   private
   
 
     def user_params
-      params.require(:user).permit(:email, :password, :first_name, :last_name, :country_code, :city, :company, :position, :intro, :avatar, :filterrific, :search_query, {:skill => []})
+      params.require(:user).permit(:email, :password, :first_name, :last_name, :country_code, :city, :company, :position, :intro, :avatar, :filterrific, :search_query, {:skill => []}, {:need => []})
 
 
     end

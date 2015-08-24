@@ -18,7 +18,7 @@ class User < ActiveRecord::Base
     validates :position, presence: true, length: { maximum: 50 }
     validates :intro, presence: true, length: { maximum: 1000 }
     validates :country_code, presence: true
-  
+
 
     has_many :conversations, :foreign_key => :sender_id
 
@@ -44,7 +44,7 @@ filterrific :default_filter_params => { :sorted_by => 'created_at_desc' },
   scope :search_query, lambda { |query|
     return nil  if query.blank?
     # condition query, parse into individual keywords
-    terms = query.downcase.insert(0, '*').split(/s+/)
+    terms = query.downcase.insert(0, '*').split(/W/)
     # replace "*" with "%" for wildcard searches,
     # append '%', remove duplicate '%'s
 
@@ -55,16 +55,14 @@ filterrific :default_filter_params => { :sorted_by => 'created_at_desc' },
     # configure number of OR conditions for provision
     # of interpolation arguments. Adjust this if you
     # change the number of OR conditions.
-    num_or_conds = 2
+    num_or_conds = 3
   where(
     terms.map { |term|
-      "(LOWER(users.city) LIKE ? OR LOWER(users.intro) LIKE ?)"
+      "(LOWER(users.city) LIKE ? OR LOWER(users.intro) LIKE ? OR LOWER(users.country_code) LIKE ?)"
     }.join(' AND '),
     *terms.map { |e| [e] * num_or_conds }.flatten
   )
 }
-
-
 
 
 
@@ -82,9 +80,15 @@ filterrific :default_filter_params => { :sorted_by => 'created_at_desc' },
 
 
 def self.options_for_sorted_by
- 
       ['Name (a-z)', 'name_asc']
+    
   end
+
+
+
+
+
+
 
 
 
