@@ -1,4 +1,5 @@
 require 'twitter'
+require 'twitter-text'
 
 class UsersController < ApplicationController
 	before_action :authenticate_user!
@@ -6,6 +7,14 @@ class UsersController < ApplicationController
  #  named_scope :without_user, lambda{|user| user ? {:conditions => ["id != ?", user.id]} : {} }
   # GET /users
  def index
+
+
+  @client = Twitter::REST::Client.new do |config|
+  config.consumer_key        = 'BUsYh9qYnmESuqESatiIXKt3A'
+  config.consumer_secret     = '4Ad3svU2bGvGrQ45OWwyAvF7pviv0ikTb1o0q5QS791oAV8ulk'
+  config.access_token        = '368995232-Rwvgpz7LVtpqQ9HGY1Z7ux1cAOtlVmB3ji9Vo1RS'
+  config.access_token_secret = 'wlW5zhC2N7t9es0vIz9TiPDXZr6mhqQAXM9qo8TJQcU1Z'
+end
     
         @conversations = Conversation.involving(current_user).order("created_at DESC")
 
@@ -24,6 +33,10 @@ class UsersController < ApplicationController
       format.html
       format.js
     end
+
+
+
+
   end
   
 
@@ -96,30 +109,11 @@ def profile
 
 
 
-
-def twitter_news
-
-  client = Twitter::REST::Client.new do |config|
-  config.consumer_key        = 'BUsYh9qYnmESuqESatiIXKt3A'
-  config.consumer_secret     = '4Ad3svU2bGvGrQ45OWwyAvF7pviv0ikTb1o0q5QS791oAV8ulk'
-  config.access_token        = '368995232-Rwvgpz7LVtpqQ9HGY1Z7ux1cAOtlVmB3ji9Vo1RS'
-  config.access_token_secret = 'wlW5zhC2N7t9es0vIz9TiPDXZr6mhqQAXM9qo8TJQcU1Z'
-end
-
-  @tweet_news = client.user_timeline("pinchito", {count: 5}) 
-
-
-end
-
-
-
-
-
   private
   
 
     def user_params
-      params.require(:user).permit(:email, :password, :first_name, :last_name, :country_code, :city, :company, :position, :intro, :avatar, :filterrific, :search_query, {:skill => []}, {:need => []})
+      params.require(:user).permit(:email, :password, :first_name, :last_name, :country_code, :city, :company, :position, :intro, :avatar, :filterrific, :screen_name, :search_query, {:skill => []}, {:need => []})
 
 
     end

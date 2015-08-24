@@ -27,8 +27,6 @@ Rails.application.routes.draw do
     resources :messages
   end
 
-get '/users/twitter_news', to: 'users#twitter_news'
-
 
 get '/users/profile', to: 'users#profile'
 

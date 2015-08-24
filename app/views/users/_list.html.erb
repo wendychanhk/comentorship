@@ -1,7 +1,5 @@
  <div id="filterrific_results">
 
-
-
   <table class="table">
     <thead>
      <tr>
@@ -52,18 +50,31 @@
                     <div id="intro_modal"><%= user.intro %></div>
                     <div id="image_modal"><%= image_tag user.avatar.url %></div>
 
+  <% if user.screen_name? %>
+ <div> <%= user.first_name %>'s tweets: 
+ <% @tweet_news = @client.user_timeline(user.screen_name, {count: 10}) %>
 
-            
+                     <%   @tweet_news.each do |tweet| %>
+                      <ul>
+                        <li><%= twitter_text(tweet.text) %></li>
+                      </ul>
+                       <% end %>
+                      <% end %>
+                    </div>
+
+
                   </ul>
                 </ul>
-              </div>
-              <div class="modal-footer">
+                 <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 
               </div>
+              </div>
+             
             </div>
           </div>
         </div>  
+
 
 
 
