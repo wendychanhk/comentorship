@@ -63,25 +63,33 @@
                 </div>
               </div>
 
-
               <div class="col-md-6">
 
                <hr>
-               <h3>The Tweets you may find interesting</h3>
+
+
+               <h3>Events in <%= current_user.city %> you may find interesting</h3>
 
                <div style="height: 400px; overflow-y: auto;">
-                
+
+               <% @events.events.each do |event| %>
+                 <ul>
+                  <li>
+                       <a href= <%=event.url %>><%= event.name.text %> </a>
+                      <%= event.start.local.split(/T/)[0]%>
+
+                  </li>
+                </ul>
+
+             
+
+                <% end %>
 
 
+              </div>
 
 
-
-
-
-               </div>
-
-
-             </div>
-           </div>
-         </div>
-       </div>
+            </div>
+          </div>
+        </div>
+      </div>
