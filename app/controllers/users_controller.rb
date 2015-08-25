@@ -1,5 +1,4 @@
-require 'twitter'
-require 'twitter-text'
+
 require 'eventbrite'
 
 class UsersController < ApplicationController

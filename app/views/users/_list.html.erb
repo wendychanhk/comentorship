@@ -7,7 +7,6 @@
       <th>Name</th>
       <th>Country</th>
       <th>City</th>
-      <th>Description</th>
       <th>Expertise:</th>
       <th>Want to learn:</th>
     </tr>
@@ -19,7 +18,7 @@
       <td><%=link_to user.first_name, "#", data: {toggle: "modal", target: "#myModal"+user.id.to_s} %></td>
       <td><%= user.country_code %> </td>
       <td><%= user.city %></td>
-      <td><%= user.intro %></td>
+
 
       <td><% user.skill.shift %>
         <%= user.skill.join(", ") %></td>
