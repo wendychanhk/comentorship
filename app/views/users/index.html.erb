@@ -3,31 +3,11 @@
 <div class="row">
   <!-- Not implemented on tutorial -->
 
-
-
-
-
   <div class="col-md-12">
     <div style="height: 800px; overflow-y: auto;">
       <div class="panel panel-default">
         <!-- Default panel contents -->
-        <div class="panel-heading">Registered Users</div>
-
-
-
-        <%= form_for_filterrific @filterrific do |f| %>
-        <div>
-          Search
-          <%# give the search field the 'filterrific-periodically-observed' class for live updates %>
-          <%= f.text_field(
-            :search_query,
-            class: 'filterrific-periodically-observed'
-              ) %>
-            </div>
-            <%# add an automated spinner to your form when the list is refreshed %>
-            <%= render_filterrific_spinner %>
-            <% end %>
-
+        <div class="panel-heading">Your matches</div>
 
             <%= render(
               partial: 'users/list',

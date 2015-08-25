@@ -10,37 +10,15 @@ class UsersController < ApplicationController
   def index
 
 
-    @client = Twitter::REST::Client.new do |config|
-      config.consumer_key        = 'BUsYh9qYnmESuqESatiIXKt3A'
-      config.consumer_secret     = '4Ad3svU2bGvGrQ45OWwyAvF7pviv0ikTb1o0q5QS791oAV8ulk'
-      config.access_token        = '368995232-Rwvgpz7LVtpqQ9HGY1Z7ux1cAOtlVmB3ji9Vo1RS'
-      config.access_token_secret = 'wlW5zhC2N7t9es0vIz9TiPDXZr6mhqQAXM9qo8TJQcU1Z'
-    end
-
-
     Eventbrite.token = 'GW7F56RPWBEZOKIZ4KO6'
     @events = Eventbrite::Event.search({:"venue.city" => current_user.city, :"venue.country" => current_user.country_code, q: (current_user.need).join(", OR ")})
 
     @conversations = Conversation.involving(current_user).order("created_at DESC")
 
+    #Let's load all the users that make a match
+    #current_user.find_users_matches 
 
-    @filterrific = initialize_filterrific(
-      User.where.not("id = ?",current_user.id),
-      params[:filterrific],
-      :select_options => {
-        sorted_by: User.options_for_sorted_by
-      }
-      ) or return
-    @users = @filterrific.find.page(params[:page])
-
-
-    respond_to do |format|
-      format.html
-      format.js
-    end
-
-
-
+   @users = current_user.find_users_matches_need | current_user.find_users_matches_skill 
 
   end
   
@@ -118,7 +96,7 @@ class UsersController < ApplicationController
   
 
   def user_params
-    params.require(:user).permit(:email, :password, :first_name, :last_name, :country_code, :city, :company, :position, :intro, :avatar, :filterrific, :screen_name, :search_query, {:skill => []}, {:need => []})
+    params.require(:user).permit(:email, :password, :first_name, :last_name, :country_code, :city, :company, :position, :intro, :avatar, :screen_name, {:skill => []}, {:need => []})
 
 
   end

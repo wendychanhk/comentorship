@@ -37,59 +37,44 @@ class User < ActiveRecord::Base
 #rake paperclip:refresh CLASS=User -> refresh all style
 
 
-filterrific :default_filter_params => { :sorted_by => 'created_at_desc' },
-              :available_filters => %w[
-                search_query
-                sorted_by
-              ]
-
-
- self.per_page = 10
 
 
 
-  scope :search_query, lambda { |query|
-    return nil  if query.blank?
-    # condition query, parse into individual keywords
-    terms = query.downcase.insert(0, '*').split(/W/)
-    # replace "*" with "%" for wildcard searches,
-    # append '%', remove duplicate '%'s
-
-
-    terms = terms.map { |e|
-      (e.gsub('*', '%') + '%').gsub(/%+/, '%')
-    }
-    # configure number of OR conditions for provision
-    # of interpolation arguments. Adjust this if you
-    # change the number of OR conditions.
-    num_or_conds = 3
-  where(
-    terms.map { |term|
-      "(LOWER(users.city) LIKE ? OR LOWER(users.intro) LIKE ? OR LOWER(users.country_code) LIKE ?)"
-    }.join(' AND '),
-    *terms.map { |e| [e] * num_or_conds }.flatten
-  )
-}
-
-
-
-
-  scope :sorted_by, lambda { |sort_option|
-    # extract the sort direction from the param value.
-    direction = (sort_option =~ /desc$/) ? 'desc' : 'asc'
-    case sort_option.to_s
-    when /^created_at_/
-      order("users.created_at #{ direction }")
-    else
-      raise(ArgumentError, "Invalid sort option: #{ sort_option.inspect }")
+# this method is put here becasue the method is dealing with db. all method dealing with database should be put in model, then let the controller to call it
+#the objects inside these methods cant be called by the controller 
+def find_users_matches_need
+  col = []
+  need.each do |n|
+    if n.present? #empty string = not true 
+      candidate_users = User.select(:id, :skill)
+      candidate_users.each do |user|
+        if user.skill.include? n
+          col.push(User.find user.id)
+        end
+      end
     end
-  }
-
-
-def self.options_for_sorted_by
-      ['Name (a-z)', 'name_asc']
-    
   end
+  col
+end
+
+def find_users_matches_skill
+  col = []
+  skill.each do |s|
+    if s.present?
+      candidate_users = User.select(:id, :need)
+      candidate_users.each do |user|
+        if user.need.include? s
+          col.push(User.find user.id)
+        end
+      end
+    end
+  end
+  col
+end
+
+
+
+
 
 
 

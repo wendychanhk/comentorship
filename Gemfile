@@ -17,13 +17,6 @@ gem 'private_pub'
 gem 'thin'
 
 
-
-gem 'filterrific'
-gem 'will_paginate', '~> 3.0.6'
-
-gem 'twitter'
-gem 'twitter-text'
-
 gem 'eventbrite', '~> 0.0.1'
 
 # Use jquery as the JavaScript library

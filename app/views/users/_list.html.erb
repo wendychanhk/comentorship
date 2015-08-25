@@ -7,13 +7,12 @@
       <th>Name</th>
       <th>Country</th>
       <th>City</th>
-      <th>Intro</th>
-      <th>I have</th>
-      <th>I want</th>
+      <th>Description</th>
+      <th>Expertise:</th>
+      <th>Want to learn:</th>
     </tr>
   </thead>
   <tbody>
-
 
     <% @users.each do |user| %>
     <tr>
@@ -50,37 +49,31 @@
                     <div id="intro_modal"><%= user.intro %></div>
                     <div id="image_modal"><%= image_tag user.avatar.url(:medium) %></div>
 
-                    <% if user.screen_name? %>
-                    <div> <%= user.first_name %>'s tweets: 
-                     <% @tweet_news = @client.user_timeline(user.screen_name, {count: 10}) %>
+                    <br>
 
-                     <%   @tweet_news.each do |tweet| %>
-                     <ul>
-                      <li><%= twitter_text(tweet.text) %></li>
-                    </ul>
-                    <% end %>
-                    <% end %>
-                  </div>
+                    <a class="twitter-timeline" href="https://twitter.com/"+ <%= user.screen_name %> data-widget-id="636167451466682369"    data-chrome="transparent nofooter noborders"data-screen-name= <%= user.screen_name%>></a>
+                    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+                    <br>
 
 
+                  </ul>
                 </ul>
-              </ul>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 
+                </div>
               </div>
+
             </div>
-            
           </div>
-        </div>
-      </div>  
+        </div>  
 
 
 
 
 
-      <% end %>
+        <% end %>
 
-    </tbody>
-  </table>
-</div>
+      </tbody>
+    </table>
+  </div>
