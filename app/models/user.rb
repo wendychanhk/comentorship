@@ -18,16 +18,23 @@ class User < ActiveRecord::Base
     validates :position, presence: true, length: { maximum: 50 }
     validates :intro, presence: true, length: { maximum: 1000 }
     validates :country_code, presence: true
+    validates :screen_name, presence: true, length: { maximum: 50 }
+    validates :avatar, presence: true
+    validates :need, presence: true
+    validates :skill, presence: true
+
+
 
 
     has_many :conversations, :foreign_key => :sender_id
 
 
-     has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/images/:style/default_image.png"
+     has_attached_file :avatar, :styles => {:medium => "200x200>", :thumb => "50x50#" }, :default_url => "/images/:style/default_image.png"
         validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
 
 
-
+#paperclip save the original images with these two versions. After uploading the image, you can only call these two sizes
+#rake paperclip:refresh CLASS=User -> refresh all style
 
 
 filterrific :default_filter_params => { :sorted_by => 'created_at_desc' },

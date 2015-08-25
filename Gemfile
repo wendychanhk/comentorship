@@ -16,6 +16,8 @@ gem 'paperclip'
 gem 'private_pub'
 gem 'thin'
 
+
+
 gem 'filterrific'
 gem 'will_paginate', '~> 3.0.6'
 

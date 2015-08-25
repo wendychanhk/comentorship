@@ -48,7 +48,7 @@
                     <div id="name_modal"><%= user.first_name %></div>  
                     <div id="city_modal"> <%= user.city %></div>
                     <div id="intro_modal"><%= user.intro %></div>
-                    <div id="image_modal"><%= image_tag user.avatar.url %></div>
+                    <div id="image_modal"><%= image_tag user.avatar.url(:medium) %></div>
 
                     <% if user.screen_name? %>
                     <div> <%= user.first_name %>'s tweets: 
