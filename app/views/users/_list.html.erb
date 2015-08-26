@@ -5,18 +5,28 @@
  <% @users.each do |user| %>
 
 
- <div class="item lazyOwl"> <%= link_to image_tag(user.avatar.url(:medium)), "#", data: {toggle: "modal", target: "#myModal"+user.id.to_s} %>
- </div>
+ <div class="item lazyOwl"> 
 
 
- <% end %>
+
+    <div class="reveal">
+    <%= image_tag(user.avatar.url(:medium)) %>
+    <div class="overlay"></div>
+     <div class="text">
+        <p> <%= link_to user.first_name, "#", data: {toggle: "modal", target: "#myModal"+user.id.to_s} %><br><%= link_to user.position, "#", data: {toggle: "modal", target: "#myModal"+user.id.to_s} %><br><%= link_to user.company, "#", data: {toggle: "modal", target: "#myModal"+user.id.to_s} %></p>
+      </div>
+  
+     </div>
+
+
+
+     </div> 
+
+
+     <% end %>
+
 
 </div>
-
-
-
-
-
 
 
 <% @users.each do |user| %>

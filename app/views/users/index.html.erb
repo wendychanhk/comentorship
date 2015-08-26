@@ -4,8 +4,6 @@
     <div style="overflow-y: auto;">
       
         <!-- Default panel contents -->
-        <div>Your matches</div>
-        <br>
 
         <% if @users.present? %>
         <%= render(
@@ -30,7 +28,7 @@
 
       <h4>Conversations</h4>
 
-      <div style="height: 250px; overflow-y: auto;">
+      <div style="height: 200px; overflow-y: auto;">
         <% if @conversations.any? %>
         <ul class="media-list">
           <% @conversations.each do |conversation| %>
@@ -61,7 +59,7 @@
 
      <h4>Why not going to these events in <%= current_user.city %> with you mentors?</h4>
 
-     <div style="height: 250px; overflow-y: auto;">
+     <div style="height: 200px; overflow-y: auto;">
 
        <% @events.events.each do |event| %>
    

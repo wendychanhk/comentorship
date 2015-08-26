@@ -46,3 +46,71 @@ li.media a {
     padding: 10px;
 }
 
+
+
+/*width of the reveal box*/
+/*angle of the overlay-box*/
+/*works fine under 15 deg*/
+.reveal {
+  background: #c8c8c8;
+  height: 350px;
+  width: 250px;
+  margin: 20px;
+  float: left;
+  /*used to align the .overlay relatively to this element */
+  position: relative;
+  /*hide the overflowing overlay, that initially is located outside of this element*/
+  overflow: hidden;
+  text-align: center;
+}
+.reveal:hover .overlay {
+  left: -43.41204px;
+}
+.reveal .image, .reveal img {
+  position: relative;
+
+  height: 100%;
+}
+.reveal .overlay {
+  position: absolute;
+  height: 100%;
+  width: 370.96095px;
+  top: 0.48384;
+  top: 0;
+  background: rgba(10, 10, 10, 0.7);
+  transform: skew(-14deg);
+  -moz-transform: skew(-14deg);
+  -o-transform: skew(-14deg);
+  -webkit-transform: skew(-14deg);
+  /*initially it is outside of .reveal*/
+  left: -500px;
+  transition: left 400ms ease-in;
+  -o-transition: left 400ms ease-in;
+  -moz-transition: left 400ms ease-in;
+  -webkit-transition: left 400ms ease-in;
+}
+.reveal .text {
+  position: absolute;
+  margin: 6px;
+  border: 2px solid white;
+  display: table;
+  height: 338px;
+  width: 238px;
+  text-align: center;
+  color: white;
+  opacity: 0;
+  transition: all 400ms ease-in 100ms;
+  -o-transition: all 400ms ease-in 100ms;
+  -moz-transition: all 400ms ease-in 100ms;
+  -webkit-transition: all 400ms ease-in 100ms;
+  top: 0;
+}
+.reveal .text p {
+  display: table-cell;
+  vertical-align: middle;
+  font-weight: bold;
+  font-size: 1em;
+}
+.reveal:hover .text {
+  opacity: 1;
+}
