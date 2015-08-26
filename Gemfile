@@ -16,6 +16,7 @@ gem 'paperclip'
 gem 'private_pub'
 gem 'thin'
 
+gem 'owlcarousel-rails'
 
 gem 'eventbrite', '~> 0.0.1'
 

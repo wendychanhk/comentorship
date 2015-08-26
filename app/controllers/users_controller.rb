@@ -8,7 +8,6 @@ class UsersController < ApplicationController
   # GET /users
   def index
 
-
     Eventbrite.token = 'GW7F56RPWBEZOKIZ4KO6'
     @events = Eventbrite::Event.search({:"venue.city" => current_user.city, :"venue.country" => current_user.country_code, q: (current_user.need).join(", OR ")})
 
@@ -17,10 +16,19 @@ class UsersController < ApplicationController
     #Let's load all the users that make a match
     #current_user.find_users_matches 
 
-   @users = current_user.find_users_matches_need | current_user.find_users_matches_skill 
+  #if params[:search].present?
+  #  users_all_searched = User.search(params[:search])
+   #users_matched =  (current_user.find_users_matches_need | current_user.find_users_matches_skill)  
+  # @users = users_all_searched && users_matched
+  #else
+   
+    @users = (current_user.find_users_matches_need | current_user.find_users_matches_skill)
 
-  end
-  
+ # end
+end
+
+
+
 
 
   # GET /users/1

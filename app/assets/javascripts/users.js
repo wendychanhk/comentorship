@@ -1,6 +1,17 @@
 // Place all the behaviors and hooks related to the matching controller here.
 // All this logic will automatically be available in application.js.
 
+
+$(document).ready(function() {
+ 
+  $("#owl-demo").owlCarousel({
+    items : 4,
+    lazyLoad : true,
+    navigation : true
+  }); 
+ 
+});
+
 var ready = function () {
 
     /**
@@ -75,3 +86,8 @@ var ready = function () {
 
 $(document).ready(ready);
 $(document).on("page:load", ready);
+
+
+
+
+

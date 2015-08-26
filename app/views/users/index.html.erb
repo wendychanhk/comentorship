@@ -1,75 +1,80 @@
-
-
-<div class="row">
   <!-- Not implemented on tutorial -->
 
   <div class="col-md-12">
-    <div style="height: 800px; overflow-y: auto;">
+    <div style="overflow-y: auto;">
       <div class="panel panel-default">
         <!-- Default panel contents -->
         <div class="panel-heading">Your matches</div>
 
-            <%= render(
-              partial: 'users/list',
-              locals: { users: @users }
-              ) %>
-
-              <!-- Table -->
-
-
-              <div class="col-md-6">
-                <hr>
-                
-                <h3>Your Conversations</h3>
-
-                <div style="height: 400px; overflow-y: auto;">
-                  <% if @conversations.any? %>
-                  <ul class="media-list">
-                    <% @conversations.each do |conversation| %>
-                    <li class="media">
-                      <%= image_tag(conversation_interlocutor(conversation).avatar.url(:thumb), class: "media-object pull-left") %>
-                      <div class="media-body">
-                        <%= link_to "", conversation_path(conversation), class: "conversation", "data-cid" => conversation.id %>
-                        <h4 class="media-heading"><%= conversation_interlocutor(conversation).first_name %></h4>
-                        <p><%= conversation.messages.last.nil? ? "No messages" : truncate(conversation.messages.last.body, length: 45) %></p>
-                      </div>
-                    </li>
-
-                    <% end %>
-                  </ul>
-                  <% else %>
-                  <p>You have no conversations. Click send message with any user to create one.</p>
-                  <% end %>
-                </div>
-              </div>
-
-              <div class="col-md-6">
-
-               <hr>
-
-
-               <h3>Events in <%= current_user.city %> you may find interesting</h3>
-
-               <div style="height: 400px; overflow-y: auto;">
-
-               <% @events.events.each do |event| %>
-                 <ul>
-                  <li>
-                       <a href= <%=event.url %>><%= event.name.text %> </a>
-                      <%= event.start.local.split(/T/)[0]%>
-
-                  </li>
-                </ul>
-
-             
-
-                <% end %>
-
-
-              </div>
-
-
-            </div>
-          </div>
+        <% if @users.present? %>
+        <%= render(
+          partial: 'users/list',
+          locals: { users: @users }
+          ) %>
+          <% else %>
+          <p>There are no users matching your profile  %>.</p>
+          <% end %>
+          <!-- Table -->
         </div>
       </div>
+    </div>
+
+
+
+
+
+
+
+    <div class="col-md-6">
+      <hr>
+
+      <h4>Conversations</h4>
+
+      <div style="height: 250px; overflow-y: auto;">
+        <% if @conversations.any? %>
+        <ul class="media-list">
+          <% @conversations.each do |conversation| %>
+          <li class="media">
+            <%= image_tag(conversation_interlocutor(conversation).avatar.url(:thumb), class: "media-object pull-left") %>
+            <div class="media-body">
+              <%= link_to "", conversation_path(conversation), class: "conversation", "data-cid" => conversation.id %>
+              <h4 class="media-heading"><%= conversation_interlocutor(conversation).first_name %></h4>
+              <p><%= conversation.messages.last.nil? ? "No messages" : truncate(conversation.messages.last.body, length: 45) %></p>
+            </div>
+          </li>
+
+          <% end %>
+        </ul>
+        <% else %>
+        <p>You have no conversations. Dont' be shy! Click "send message" to start networking</p>
+        <% end %>
+      </div>
+    </div>
+
+
+
+
+
+    <div class="col-md-6">
+
+     <hr>
+
+     <h4>Why not going to these events in <%= current_user.city %> with you mentors?</h4>
+
+     <div style="height: 250px; overflow-y: auto;">
+
+       <% @events.events.each do |event| %>
+       <ul>
+        <li>
+         <a href= <%=event.url %>><%= event.name.text %> </a>
+         <%= event.start.local.split(/T/)[0]%>
+
+       </li>
+     </ul>
+
+
+     <% end %>
+
+
+   </div>
+
