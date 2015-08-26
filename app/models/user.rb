@@ -29,7 +29,7 @@ class User < ActiveRecord::Base
     has_many :conversations, :foreign_key => :sender_id
 
 
-     has_attached_file :avatar, :styles => {:large => "300x300#", :medium => "287x191#", :thumb => "50x50#" }, :default_url => "/images/:style/default_image.png"
+     has_attached_file :avatar, :styles => {:large => "300x300>", :medium => "287x191#", :thumb => "50x50#" }, :default_url => "/images/:style/default_image.png"
         validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
 
 

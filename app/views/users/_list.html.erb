@@ -5,77 +5,82 @@
  <% @users.each do |user| %>
 
 
-   <div class="item lazyOwl"> <%= link_to image_tag(user.avatar.url(:medium)), "#", data: {toggle: "modal", target: "#myModal"+user.id.to_s} %>
-  </div>
+ <div class="item lazyOwl"> <%= link_to image_tag(user.avatar.url(:medium)), "#", data: {toggle: "modal", target: "#myModal"+user.id.to_s} %>
+ </div>
 
 
-<% end %>
+ <% end %>
 
 </div>
 
 
- <% @users.each do |user| %>
-
-  <div class="modal fade" id="myModal<%= user.id.to_s %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-
-              <div class="modal-header">
-               <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-               <h4 class="modal-title" id="myModalLabel"><%= user.first_name %>'s profile</h4>
-             </div>
-
-
-             <div class="modal-body">
-               <ul id='list2'>
-                 <ul id="image2"> 
-
-                  <div id="name_modal"><%= user.first_name %></div>  
-                  <div id="city_modal"> <%= user.city %></div>
-                  <div id="intro_modal"><%= user.intro %></div>
-                  <div id="image_modal"><%= image_tag user.avatar.url(:medium) %></div>
-
-
-                  <% user.skill.shift %>
-
-        <%= user.skill.join(", ") %></td>
-
-        <td><% user.need.shift %>
-
-          <%= user.need.join(", ") %></td>
-
-          
-
-   <br>
 
 
 
-             <%= link_to "Send Message", "#", class: "btn btn-success btn-xs start-conversation",
-
-            "data-sid" => current_user.id, "data-rip" => user.id %>
 
 
+<% @users.each do |user| %>
 
-                  <br>
+<div class="modal fade" id="myModal<%= user.id.to_s %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
 
-                  <a class="twitter-timeline" href="https://twitter.com/"+ <%= user.screen_name %> data-widget-id="636167451466682369"    data-chrome="transparent nofooter noborders"data-screen-name= <%= user.screen_name%>></a>
-                  <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-                  <br>
+      <div class="modal-header">
+
+        <%= button_to "Send Message", "#", "data-sid" => current_user.id, "data-rip" => user.id, 
+
+        :class => "btn btn-default right start-conversation", "data-dismiss"=>"modal" %>
+
+        <h4 class="modal-title" id="myModalLabel"><%= user.first_name %>'s Profile</h4>
+      </div>
 
 
-                </ul>
-              </ul>
-            </div>
+      <div class="modal-body">
+        <div><%= image_tag user.avatar.url(:medium) %></div>
+        <div> <%= user.position %></div>
+        <div> <%= user.company %></div>
+        <div> <%= user.city %></div>
+
+        <div><%= user.intro %></div>
 
 
-            <div class="modal-footer">
-             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <div>  <% user.skill.shift %></div>
 
-           </div>
+        <div> <%= user.skill.join(", ") %></div>
+
+        <div> <% user.need.shift %></div>
+
+        <div>  <%= user.need.join(", ") %> </div>
+
+        <br>
+
+        <br>
+
+
+        <br>
+
+        <br>
+
+        <a class="twitter-timeline" href="https://twitter.com/"+ <%= user.screen_name %> data-widget-id="636167451466682369"    data-chrome="transparent nofooter noborders"data-screen-name= <%= user.screen_name%>></a>
+        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+        <br>
+
+        <br>
+
+      </div>
+
+
+      <div class="modal-footer">
+       <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+     </div>
 
 
 
    </div>
+
+
+
  </div>
 </div>
 

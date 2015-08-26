@@ -42,16 +42,6 @@
 
 
 
-<div id="top_bar">
-  <% if user_signed_in? %>
-    <p><%= link_to 'Sign out', destroy_user_session_path, method: :delete %></p>
-  <% else %>
-    <p>
-      <%= link_to 'Sign_up', new_user_registration_path %> | 
-      <%= link_to 'Sign_in', new_user_session_path %>
-    </p>
-  <% end %>
-</div>
 
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <script src="jquery-1.9.1.min.js"></script>
