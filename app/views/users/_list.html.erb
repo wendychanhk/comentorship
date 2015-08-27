@@ -54,36 +54,51 @@
         <div> <span class="glyphicon glyphicon-home" aria-hidden="true"></span>     <%= user.company %></div>
         <br>
         <div> <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>     <%= user.city %>, <%= user.country_code %></div>
-    
-     <% user.skill.shift %>
+        
+        <% user.skill.shift %>
         <br>
-        <div><span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span>     Expertise: <%= user.skill.join(" | ") %></div>
-     
-   <% user.need.shift %>
+        <div><span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span>     
+          <% if user.skill == true %>  
+
+          Expertise: <%= user.skill.join(" | ") %>
+
+          <% else %>
+          Expertise: "I still need to learn a lot!"
+          <% end %>
+
+        </div>
+        
+        <% user.need.shift %>
         <br>
-        <div><span class="glyphicon glyphicon-wrench" aria-hidden="true"> </span>     Under construction: <%= user.need.join(" | ") %> </div>
-        <br>
-        <div><span class="glyphicon glyphicon-volume-up" aria-hidden="true"> </span>     <%= user.intro %></div>
+        <div><span class="glyphicon glyphicon-wrench" aria-hidden="true"> </span>   
+         <% if user.need == true %>  
+         Under construction: <%= user.need.join(" | ") %>
+         <% else %>
+         Under construction: "I am so good, no need improvement."
+         <% end %>
+       </div>
+       <br>
+       <div><span class="glyphicon glyphicon-volume-up" aria-hidden="true"> </span>     <%= user.intro %></div>
 
-        <br>
+       <br>
 
-        <br>
-        <br>
+       <br>
+       <br>
 
-        <br>
-
-
-
-        <a class="twitter-timeline" href="https://twitter.com/"+ <%= user.screen_name %> data-widget-id="636167451466682369"    data-chrome="transparent nofooter noborders"data-screen-name= <%= user.screen_name%>></a>
-        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-        <br>
-
-        <br>
-
-      </div>
+       <br>
 
 
-      <div class="modal-footer">
+
+       <a class="twitter-timeline" href="https://twitter.com/"+ <%= user.screen_name %> data-widget-id="636167451466682369"    data-chrome="transparent nofooter noborders"data-screen-name= <%= user.screen_name%>></a>
+       <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+       <br>
+
+       <br>
+
+     </div>
+
+
+     <div class="modal-footer">
        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 
      </div>
