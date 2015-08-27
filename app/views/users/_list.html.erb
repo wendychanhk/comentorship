@@ -57,13 +57,13 @@
     
      <% user.skill.shift %>
         <br>
-        <div><span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span>     Expertise: <%= user.skill.join(", ") %></div>
+        <div><span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span>     Expertise: <%= user.skill.join(" | ") %></div>
      
    <% user.need.shift %>
         <br>
-        <div><span class="glyphicon glyphicon-wrench" aria-hidden="true"> </span>     Under construction: <%= user.need.join(", ") %> </div>
+        <div><span class="glyphicon glyphicon-wrench" aria-hidden="true"> </span>     Under construction: <%= user.need.join(" | ") %> </div>
         <br>
-        <div><span class="glyphicon glyphicon-transfer" aria-hidden="true"> </span>     <%= user.intro %></div>
+        <div><span class="glyphicon glyphicon-volume-up" aria-hidden="true"> </span>     <%= user.intro %></div>
 
         <br>
 

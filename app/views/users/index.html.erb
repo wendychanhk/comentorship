@@ -1,7 +1,7 @@
   <!-- Not implemented on tutorial -->
   <br>
     <br>
-<h1>Comentorship Network</h1>
+<h1>Startup Comentorship Network</h1>
   <br>
     <br>
   <div class="col-md-12">
@@ -32,8 +32,9 @@
       <hr>
 
       <h4>Conversations</h4>
+       <br>
   <br>
-      <div style="height: 500px; overflow-y: auto;">
+      <div style="height: 450px; overflow-y: auto;">
         <% if @conversations.any? %>
         <ul class="media-list">
           <% @conversations.each do |conversation| %>
@@ -61,11 +62,13 @@
 
 
      <hr>
+        <% current_user.need.shift %>
 
-     <h4>Events in <%= current_user.city %> you will like</h4>
+     <h4>Upcoming events in <%= current_user.city %> have these themes: </h4>
+     <br> <h5><%= current_user.need.join("  |  ") %></h5>
      <br>
 
-     <div style="height: 500px; overflow-y: auto;">
+     <div style="height: 450px; overflow-y: auto;">
 
 
       <% @events.events.each do |event| %>
