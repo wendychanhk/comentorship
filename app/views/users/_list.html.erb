@@ -13,7 +13,7 @@
     <%= image_tag(user.avatar.url(:medium)) %>
     <div class="overlay"></div>
      <div class="text">
-        <p> <%= link_to user.first_name, "#", data: {toggle: "modal", target: "#myModal"+user.id.to_s} %><br><%= link_to user.position, "#", data: {toggle: "modal", target: "#myModal"+user.id.to_s} %><br><%= link_to user.company, "#", data: {toggle: "modal", target: "#myModal"+user.id.to_s} %></p>
+        <p> <%= link_to user.first_name, "#", data: {toggle: "modal", target: "#myModal"+user.id.to_s} %><br><%= user.position%><br><%= user.company %></p>
       </div>
   
      </div>

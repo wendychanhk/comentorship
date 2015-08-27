@@ -1,24 +1,29 @@
   <!-- Not implemented on tutorial -->
-
+  <br>
+    <br>
+<h1>Comentorship Network</h1>
+  <br>
+    <br>
   <div class="col-md-12">
     <div style="overflow-y: auto;">
-      
-        <!-- Default panel contents -->
 
-        <% if @users.present? %>
-        <%= render(
-          partial: 'users/list',
-          locals: { users: @users }
-          ) %>
-          <% else %>
-          <p>There are no users matching your profile  %>.</p>
-          <% end %>
-          <!-- Table -->
+      <!-- Default panel contents -->
+
+      <% if @users.present? %>
+      <%= render(
+        partial: 'users/list',
+        locals: { users: @users }
+        ) %>
+        <% else %>
+        <p>There are no users matching your profile  %>.</p>
+        <% end %>
+        <!-- Table -->
       </div>
+        <br>
+          <br>
+           <br>
+          <br>
     </div>
-
-
-
 
 
 
@@ -27,8 +32,8 @@
       <hr>
 
       <h4>Conversations</h4>
-
-      <div style="height: 200px; overflow-y: auto;">
+  <br>
+      <div style="height: 600px; overflow-y: auto;">
         <% if @conversations.any? %>
         <ul class="media-list">
           <% @conversations.each do |conversation| %>
@@ -52,26 +57,32 @@
 
 
 
+    <div class="col-md-6" >
 
-    <div class="col-md-6">
 
      <hr>
 
-     <h4>Why not going to these events in <%= current_user.city %> with you mentors?</h4>
+     <h4>Events in <%= current_user.city %> you may find interesting</h4>
+     <br>
 
-     <div style="height: 200px; overflow-y: auto;">
-
-       <% @events.events.each do |event| %>
-   
-      
-         <a href= <%=event.url %>><%= event.name.text %> </a>
-         <%= event.start.local.split(/T/)[0]%> 
-         <br>
+     <div style="height: 600px; overflow-y: auto;">
 
 
+      <% @events.events.each do |event| %>
 
-     <% end %>
+      <div class="event">  <ul> <li> <a href= <%=event.url %>><%= event.name.text %> </a>
+       <div class ="date"> <%= event.start.local.split(/T/)[0]%> </div><br></li>   </ul></div>
+
+       <% end %>
+
+
+     </div>
 
 
    </div>
 
+   <br>
+   <br>
+   <br>
+   <br>
+   <br>

@@ -5,7 +5,7 @@
 $(document).ready(function() {
  
   $("#owl-demo").owlCarousel({
-    items : 4,
+    items : 3,
     lazyLoad : true,
     navigation : true
   }); 
