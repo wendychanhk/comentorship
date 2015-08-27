@@ -33,7 +33,7 @@
 
       <h4>Conversations</h4>
   <br>
-      <div style="height: 600px; overflow-y: auto;">
+      <div style="height: 500px; overflow-y: auto;">
         <% if @conversations.any? %>
         <ul class="media-list">
           <% @conversations.each do |conversation| %>
@@ -62,10 +62,10 @@
 
      <hr>
 
-     <h4>Events in <%= current_user.city %> you may find interesting</h4>
+     <h4>Events in <%= current_user.city %> you will like</h4>
      <br>
 
-     <div style="height: 600px; overflow-y: auto;">
+     <div style="height: 500px; overflow-y: auto;">
 
 
       <% @events.events.each do |event| %>
