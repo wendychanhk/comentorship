@@ -58,24 +58,15 @@
         <% user.skill.shift %>
         <br>
         <div><span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span>     
-          <% if user.skill == true %>  
 
           Expertise: <%= user.skill.join(" | ") %>
-
-          <% else %>
-          Expertise: "I still need to learn a lot!"
-          <% end %>
-
+          
         </div>
         
         <% user.need.shift %>
         <br>
         <div><span class="glyphicon glyphicon-wrench" aria-hidden="true"> </span>   
-         <% if user.need == true %>  
          Under construction: <%= user.need.join(" | ") %>
-         <% else %>
-         Under construction: "I am so good, no need improvement."
-         <% end %>
        </div>
        <br>
        <div><span class="glyphicon glyphicon-volume-up" aria-hidden="true"> </span>     <%= user.intro %></div>
