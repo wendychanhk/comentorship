@@ -21,7 +21,7 @@ CSS3;
 Bootstrap;
 
 Gems used: 
-Devise
+Devise\n
 paperclip
 private_pub
 owlcarousel-rails
