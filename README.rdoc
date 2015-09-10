@@ -9,16 +9,16 @@ After an easy registration and choosing what skills the users have and what skil
 On top of this, the main page of the app will show a list of events (drawn from Eventbrite API) with the list of events that the current user will find interesting. For example, when User B signs up, he chooses his location as "New York” and skills that he want to improve as " PR &Communication” and "Mergers and Acquisitions”. Then the list of events shown in the page will be the upcoming events happening in New York relevant to all these keywords. This helps the users to suggest events to go with their mentors. 
 
 Technologies used: 
-Ruby on Rails 
-Javascript 
-JQuery 
-Ajax 
-PostgreSQL
-Twitter customised plugin 
-Eventbrite API 
-HTML5 
-CSS3 
-Bootstrap 
+Ruby on Rails;
+Javascript;
+JQuery;
+Ajax;
+PostgreSQL;
+Twitter customised plugin;
+Eventbrite API;
+HTML5;
+CSS3;
+Bootstrap;
 
 Gems used: 
 Devise
