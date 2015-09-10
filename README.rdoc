@@ -21,31 +21,30 @@ CSS3;
 Bootstrap;
 
 Gems used: 
-Devise\n
-paperclip
-private_pub
-owlcarousel-rails
-eventbrite
-pry-rails
-carmen-rails
+Devise;
+paperclip;
+private_pub;
+owlcarousel-rails;
+eventbrite;
+pry-rails;
+carmen-rails;
 
 16 Skills essential for startup founders: 
-Customer Service & Acquisition  
-PR &Communication
-Leadership & Management   
-Recruitment   
-Entrepreneurship 
-Business Operations & Growth 
-Marketing, Sales & Branding 
-Product Development & Branding 
-Legal 
-Finance & Accounting 
-E-Commerce, Payments & Virtual Currency
-Angel, VC & public financings
-Mergers and Acquisitions 
-Technology
-Software Engineering  & Web Development
-Design & UX
-SEO/SEM & Social Media
+Customer Service & Acquisition;
+PR &Communication;
+Leadership & Management;
+Recruitment;
+Entrepreneurship; 
+Business Operations & Growth;
+Marketing, Sales & Branding;
+Product Development & Branding;
+Legal;
+Finance & Accounting;
+E-Commerce, Payments & Virtual Currency;
+Angel, VC & public financings;
+Mergers and Acquisitions;
+Software Engineering  & Web Development;
+Design & UX;
+SEO/SEM & Social Media;
 Big Data & Cloud Computing
 
