@@ -1,28 +1,51 @@
-== README
+== Startup Co-mentorship Network
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+"Startup Co-mentorship Network", is my final project at Ironhack web development immersive programme in which students spent around 10 days finishing their solo projects from scratch. My project was one of the five projects selected by the jury to be presented at the Hackshow at Google Campus in Madrid (on 28th Aug, 2015). The app is a social platform for startup cofounders to network and exchange skills. It is a solo project of which I mainly built with Ruby on Rails, JavaScript. 
 
-Things you may want to cover:
+I see many startup founders have difficulty in finding mentors for career advice. The mentorship programmes available in the market are either too expensive or too competitive. As I believe that everyone has a skill to share, I built this project to provide a platform for people to register their needs and what they can offer in return. I have identified 16 skills which are essential for startup people to excel (see the list below). 
 
-* Ruby version
+After an easy registration and choosing what skills the users have and what skills they want to improve, the users will be directed to a page with filtered matches, showing other users who fulfil the current user’s search criteria. For example, User A has coding skill to offer and in need of marketing skill, then he will see a list of users with marketing skills or in need of coding skill. Each user has his/her own profile (built with Bootstrap modal), in which their basic info and their (or their company’s) twitter timeline will be shown (built with Twitter plugin). If User A is interested in any of the profiles of other users, he can press “send message” button to trigger a Facebook-like messaging box to start conversation with the user he like. 
 
-* System dependencies
+On top of this, the main page of the app will show a list of events (drawn from Eventbrite API) with the list of events that the current user will find interesting. For example, when User B signs up, he chooses his location as "New York” and skills that he want to improve as " PR &Communication” and "Mergers and Acquisitions”. Then the list of events shown in the page will be the upcoming events happening in New York relevant to all these keywords. This helps the users to suggest events to go with their mentors. 
 
-* Configuration
+Technologies used: 
+Ruby on Rails 
+Javascript 
+JQuery 
+Ajax 
+PostgreSQL
+Twitter customised plugin 
+Eventbrite API 
+HTML5 
+CSS3 
+Bootstrap 
 
-* Database creation
+Gems used: 
+Devise
+paperclip
+private_pub
+owlcarousel-rails
+eventbrite
+pry-rails
+carmen-rails
 
-* Database initialization
+16 Skills essential for startup founders: 
+Customer Service & Acquisition  
+PR &Communication
+Leadership & Management   
+Recruitment   
+Entrepreneurship 
+Business Operations & Growth 
+Marketing, Sales & Branding 
+Product Development & Branding 
+Legal 
+Finance & Accounting 
+E-Commerce, Payments & Virtual Currency
+Angel, VC & public financings
+Mergers and Acquisitions 
+Technology
+Software Engineering  & Web Development
+Design & UX
+SEO/SEM & Social Media
+Big Data & Cloud Computing
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
